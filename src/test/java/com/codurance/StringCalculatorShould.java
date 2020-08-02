@@ -31,7 +31,9 @@ public class StringCalculatorShould {
   @CsvSource(value = {
       "''; 0",
       "0, 0; 0",
-      "1, 0; 1"
+      "1, 0; 1",
+      "1, 2; 3",
+      "1, 2, 3, 4, 5, 6, 7, 8, 9; 45"
   }, delimiter = ';')
   void returns_correct_output_with_input(String input, int output) {
     assertEquals(output, stringCalculator.add(input));

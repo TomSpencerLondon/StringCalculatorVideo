@@ -1,12 +1,18 @@
 package com.codurance;
 
+import java.util.Arrays;
+
 public class StringCalculator {
 
   public int add(String input) {
     if (input.length() == 0){
       return 0;
     }
-    return Integer.parseInt(input.split(",")[0].trim())
-        + Integer.parseInt(input.split(",")[1].trim());
+
+    return Arrays.stream(input.split(","))
+        .map(String::strip)
+        .mapToInt(Integer::parseInt)
+        .sum();
+
   }
 }
