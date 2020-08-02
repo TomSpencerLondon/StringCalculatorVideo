@@ -1,6 +1,7 @@
 package com.codurance;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -38,5 +39,12 @@ public class StringCalculatorShould {
   }, delimiter = ';')
   void returns_correct_output_with_input(String input, int output) {
     assertEquals(output, stringCalculator.add(input));
+  }
+
+  @Test
+  void throws_exception_for_input_less_than_zero() {
+    assertThrows(IllegalArgumentException.class, () -> {
+      stringCalculator.add("1, -2, -3");
+    });
   }
 }
